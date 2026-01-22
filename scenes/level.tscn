@@ -1,0 +1,434 @@
+[gd_scene load_steps=32 format=3 uid="uid://b2ohj8iao1n0s"]
+
+[ext_resource type="Script" uid="uid://dr47wbvfkch3f" path="res://scripts/GameLevel.gd" id="1_ppgk2"]
+[ext_resource type="Shader" uid="uid://cvoxiasin4e3p" path="res://level.gdshader" id="2_2r41h"]
+[ext_resource type="Texture2D" uid="uid://crue6knshjvh" path="res://assets/Art_Plants/Tilesets/Grass.png" id="2_wc255"]
+[ext_resource type="Texture2D" uid="uid://bmc1eh6vvc5v6" path="res://assets/Art_Plants/Objects/Basic Plants.png" id="3_2r41h"]
+[ext_resource type="AudioStream" uid="uid://cts0ds7kxmtw" path="res://sounds/water_splash.wav" id="4_b121j"]
+[ext_resource type="Texture2D" uid="uid://bqc4tm05fefhi" path="res://assets/Art_UI/PNG/Extra/Double/panel_glass_notches.png" id="5_2r41h"]
+[ext_resource type="AudioStream" uid="uid://casu8uy07ob3q" path="res://sounds/pickupCoin.wav" id="5_8c41q"]
+[ext_resource type="Texture2D" uid="uid://bqt3a3wvcyraa" path="res://assets/Art_UI/Vector/Grey/bar_round_large.svg" id="5_b121j"]
+[ext_resource type="Texture2D" uid="uid://c7ndv1aixdrx5" path="res://assets/Art_UI/PNG/Extra/Default/panel_glass.png" id="5_t1rx8"]
+[ext_resource type="Texture2D" uid="uid://cj6nm7c1ieedc" path="res://assets/Art_UI/PNG/Blue/Double/bar_round_gloss_large.png" id="6_8c41q"]
+[ext_resource type="FontFile" uid="uid://bet58e8eiypi0" path="res://assets/Art_UI/Font/Kenney Future.ttf" id="6_8iemx"]
+[ext_resource type="Texture2D" uid="uid://n55rw4avw4v6" path="res://assets/Art_UI/Vector/Yellow/bar_round_large.svg" id="6_olg7q"]
+[ext_resource type="Texture2D" uid="uid://lj83cm8eid0b" path="res://assets/Art_UI/PNG/Extra/Default/button_rectangle.png" id="11_8iemx"]
+[ext_resource type="FontFile" uid="uid://c7tmndus775lc" path="res://assets/Art_UI/Font/Kenney Future Narrow.ttf" id="11_64w2a"]
+[ext_resource type="Texture2D" uid="uid://qag7u6xkes3x" path="res://Individual Icons/farm_4.png" id="12_arp2o"]
+[ext_resource type="Texture2D" uid="uid://da5g32fkpfeo2" path="res://assets/Art_UI/Vector/Extra/button_rectangle.svg" id="12_fpun6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0b4ue"]
+shader = ExtResource("2_2r41h")
+shader_parameter/scanline_strength = 0.08
+shader_parameter/vignette_strength = 0.35
+shader_parameter/distortion = 0.003
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_km5ld"]
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+bg_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fpun6"]
+texture = ExtResource("5_t1rx8")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+modulate_color = Color(0.83137256, 0.6392157, 0.4509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2t4f"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8iemx"]
+texture = ExtResource("5_b121j")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_64w2a"]
+texture = ExtResource("6_olg7q")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_olg7q"]
+texture = ExtResource("5_b121j")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t1rx8"]
+texture = ExtResource("6_8c41q")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2r41h"]
+texture = ExtResource("5_2r41h")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
+modulate_color = Color(1, 0.72156864, 0.31764707, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_klq6b"]
+texture = ExtResource("5_2r41h")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
+modulate_color = Color(0.039215688, 0.80784315, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_arp2o"]
+texture = ExtResource("5_t1rx8")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.23137255, 0.16862746, 0.105882354, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gunhw"]
+texture = ExtResource("12_fpun6")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ux5qa"]
+texture = ExtResource("5_t1rx8")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.20784314, 0.53333336, 0.3372549, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_82cfe"]
+texture = ExtResource("5_t1rx8")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.83137256, 0.6392157, 0.4509804, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wc255"]
+texture = ExtResource("11_8iemx")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+modulate_color = Color(0.14509805, 0.16470589, 0.24705882, 1)
+
+[node name="GameLevel" type="Node2D"]
+script = ExtResource("1_ppgk2")
+
+[node name="FieldBackground" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -15.0
+offset_right = 1271.0
+offset_bottom = 701.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wc255")
+
+[node name="BackgroundRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1500.0
+offset_top = -1500.0
+offset_right = 1500.0
+offset_bottom = 1500.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.21960784)
+
+[node name="CRTEffect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_0b4ue")
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="PlantPivot" type="Node2D" parent="."]
+position = Vector2(576, 430)
+scale = Vector2(8, 8)
+
+[node name="PlantSprite" type="Sprite2D" parent="PlantPivot"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-0.625, -3.625)
+texture = ExtResource("3_2r41h")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+region_filter_clip_enabled = true
+
+[node name="WaterSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_b121j")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UILayout" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HUD" type="PanelContainer" parent="CanvasLayer/UILayout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_km5ld")
+
+[node name="HUDPanel" type="PanelContainer" parent="CanvasLayer/UILayout/HUD"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_fpun6")
+
+[node name="HUDContent" type="VBoxContainer" parent="CanvasLayer/UILayout/HUD/HUDPanel"]
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="DayLabel" type="Label" parent="CanvasLayer/UILayout/HUD/HUDPanel/HUDContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
+theme_override_constants/line_spacing = 6
+theme_override_fonts/font = ExtResource("6_8iemx")
+theme_override_font_sizes/font_size = 40
+text = "   Day 1"
+
+[node name="StageLabel" type="Label" parent="CanvasLayer/UILayout/HUD/HUDPanel/HUDContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
+theme_override_constants/line_spacing = 6
+theme_override_fonts/font = ExtResource("6_8iemx")
+theme_override_font_sizes/font_size = 30
+text = "   Stage: Seed
+"
+
+[node name="WeatherLabel" type="Label" parent="CanvasLayer/UILayout/HUD/HUDPanel/HUDContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91764706, 0.91764706, 0.91764706, 1)
+theme_override_constants/line_spacing = 6
+theme_override_fonts/font = ExtResource("6_8iemx")
+theme_override_font_sizes/font_size = 30
+text = "    Weather: Normal
+"
+
+[node name="StatusPanel" type="PanelContainer" parent="CanvasLayer/UILayout"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i2t4f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UILayout/StatusPanel"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="LightBar" type="ProgressBar" parent="CanvasLayer/UILayout/StatusPanel/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxTexture_8iemx")
+theme_override_styles/fill = SubResource("StyleBoxTexture_64w2a")
+show_percentage = false
+
+[node name="WaterBar" type="ProgressBar" parent="CanvasLayer/UILayout/StatusPanel/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxTexture_olg7q")
+theme_override_styles/fill = SubResource("StyleBoxTexture_t1rx8")
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/UILayout/StatusPanel/VBoxContainer/WaterBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="GameSpacer" type="Control" parent="CanvasLayer/UILayout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ControlsPanel" type="PanelContainer" parent="CanvasLayer/UILayout"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UILayout/ControlsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="LightButton" type="Button" parent="CanvasLayer/UILayout/ControlsPanel/VBoxContainer"]
+modulate = Color(1, 0.72156864, 0.31764707, 1)
+custom_minimum_size = Vector2(220, 48)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_2r41h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2r41h")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2r41h")
+
+[node name="WaterButton" type="Button" parent="CanvasLayer/UILayout/ControlsPanel/VBoxContainer"]
+modulate = Color(0.15294118, 1, 1, 1)
+custom_minimum_size = Vector2(220, 48)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_klq6b")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_klq6b")
+theme_override_styles/hover = SubResource("StyleBoxTexture_klq6b")
+icon = ExtResource("12_arp2o")
+icon_alignment = 1
+
+[node name="WaterParticles" type="CPUParticles2D" parent="CanvasLayer/UILayout/ControlsPanel/VBoxContainer/WaterButton"]
+position = Vector2(580, 22)
+amount = 30
+lifetime = 0.6
+local_coords = true
+direction = Vector2(0, -1)
+spread = 64.47
+gravity = Vector2(0, 300)
+initial_velocity_min = 160.0
+initial_velocity_max = 160.0
+scale_amount_min = 1.2
+scale_amount_max = 1.2
+color = Color(0.2901961, 0.5647059, 0.8862745, 1)
+
+[node name="GameOverPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_arp2o")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameOverPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -63.5
+offset_right = 104.0
+offset_bottom = 63.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverText" type="Label" parent="CanvasLayer/GameOverPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="RetryButton" type="Button" parent="CanvasLayer/GameOverPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8745098, 0.12156863, 0.05490196, 1)
+theme_override_fonts/font = ExtResource("11_64w2a")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_gunhw")
+text = "Retry."
+
+[node name="LevelCompletePanel" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -148.0
+offset_right = 271.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ux5qa")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LevelCompletePanel"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 138.0
+offset_right = 209.0
+offset_bottom = 227.0
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/LevelCompletePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.22745098, 1)
+theme_override_fonts/font = ExtResource("6_8iemx")
+theme_override_font_sizes/font_size = 40
+
+[node name="NextButton" type="Button" parent="CanvasLayer/LevelCompletePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_8iemx")
+theme_override_font_sizes/font_size = 20
+text = "Next Level"
+
+[node name="ShopPanel" type="Panel" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+offset_left = 308.0
+offset_top = 179.0
+offset_right = 900.0
+offset_bottom = 509.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_82cfe")
+
+[node name="Label" type="Label" parent="CanvasLayer/ShopPanel"]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 548.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("11_64w2a")
+theme_override_font_sizes/font_size = 40
+text = "ILLEGAL UPGRADES."
+
+[node name="UpgradeWaterButton" type="Button" parent="CanvasLayer/ShopPanel"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 139.0
+offset_right = 170.0
+offset_bottom = 170.0
+text = "Turbo Hose (50$)"
+
+[node name="CloseShopButton" type="Button" parent="CanvasLayer/ShopPanel"]
+layout_mode = 0
+offset_left = 538.0
+offset_top = -1.0
+offset_right = 588.0
+offset_bottom = 30.0
+text = "Close"
+
+[node name="ShopButton" type="Button" parent="CanvasLayer"]
+offset_left = 944.0
+offset_top = 19.0
+offset_right = 1134.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("11_64w2a")
+theme_override_styles/normal = SubResource("StyleBoxTexture_wc255")
+text = "ACCESS DARK WEB"
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(576, 323)
+
+[node name="GoodSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8c41q")
+volume_db = -5.0
+
+[node name="BadSound" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+
+[connection signal="pressed" from="CanvasLayer/UILayout/ControlsPanel/VBoxContainer/LightButton" to="." method="_on_light_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UILayout/ControlsPanel/VBoxContainer/WaterButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOverPanel/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelCompletePanel/VBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ShopPanel/UpgradeWaterButton" to="." method="_on_upgrade_water_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ShopPanel/CloseShopButton" to="." method="_on_close_shop_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ShopButton" to="." method="_on_shop_button_pressed"]

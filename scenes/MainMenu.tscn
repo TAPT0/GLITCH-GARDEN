@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://ddudsbugjdq7l"]
+
+[ext_resource type="Script" uid="uid://bff4idepemr8p" path="res://scripts/main_menu.gd" id="1_yqorp"]
+[ext_resource type="Texture2D" uid="uid://d3h5iib4uk3e8" path="res://assets/Art_UI/Vector/Red/bar_round_large.svg" id="2_0ykhv"]
+[ext_resource type="FontFile" uid="uid://bet58e8eiypi0" path="res://assets/Art_UI/Font/Kenney Future.ttf" id="2_2wh52"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i26rj"]
+font = ExtResource("2_2wh52")
+font_size = 72
+shadow_size = 15
+shadow_color = Color(0, 1, 0.6, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_i26rj"]
+size = Vector2(4, 4)
+
+[sub_resource type="Curve" id="Curve_eiy7p"]
+_limits = [0.0, 10.0, 0.0, 10.0]
+_data = [Vector2(0, 0.06741583), 0.0, 0.0, 0, 0, Vector2(0.07692313, 0), 0.0, 0.0, 0, 0, Vector2(1.2307692, 2.6966295), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_h7a2f"]
+offsets = PackedFloat32Array(0, 0.4903846, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7a2f"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 1, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qoqlk"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.019607844, 0.14901961, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yqorp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101960786, 0.101960786, 0.18039216, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 179.0
+offset_right = 939.0
+offset_bottom = 278.0
+theme_override_font_sizes/font_size = 64
+text = "GLITCH GARDEN."
+label_settings = SubResource("LabelSettings_i26rj")
+horizontal_alignment = 1
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(572, 392)
+amount = 50
+texture = SubResource("PlaceholderTexture2D_i26rj")
+lifetime = 5.0
+preprocess = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(600, 1)
+gravity = Vector2(0, -20)
+scale_amount_curve = SubResource("Curve_eiy7p")
+color_ramp = SubResource("Gradient_h7a2f")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 414.0
+offset_right = 614.0
+offset_bottom = 446.0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h7a2f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qoqlk")
+icon = ExtResource("2_0ykhv")
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
