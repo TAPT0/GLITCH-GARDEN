@@ -1,30 +1,30 @@
-extends Control
-@onready var start_button = $Button
-	
+extends Label
 
-## Called when the node enters the scene tree for the first time.
-#func _ready() -> void:
-	#pass # Replace with function body.
-#
-#
-## Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
+#label float upward then deletes itself
+func start_float(text_content: String, color: Color) -> void:
 
+	text = text_content
+	modulate = color
 
-func _on_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/level.tscn")
-	
+	#tween to animate movement and fade at the same time
+	var tween := create_tween()
+	tween.set_parallel(true)
 
+	#move the label up 
+	tween.tween_property(
+		self,
+		"position:y",
+		position.y - 100,
+		1.5
+	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 
-func _on_button_mouse_entered():
-	var t = create_tween()
-	t.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	t.tween_property(start_button, "scale",Vector2(1.1,1.1),0.1)
-	t.tween_property(start_button,"modulate", Color(0.5,1,0.5),0.1)
+	tween.tween_property(
+		self,
+		"modulate:a",
+		0.0,
+		1.5
+	).set_ease(Tween.EASE_IN)
 
-func _on_button_mouse_exited():
-	var t =create_tween()
-	t.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	t.tween_property(start_button,"scale",Vector2.ONE,0.1)
-	t.tween_property(start_button,"modulate",Color.WHITE,0.1)
+	#after animation finishes then delete this label
+	await tween.finished
+	queue_free()
